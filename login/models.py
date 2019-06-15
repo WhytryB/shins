@@ -2,10 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
-
-
-# Create your models here.
 class Person(models.Model):
     #  Класс моделей в таблице для пользователя
     #  поле телефона пользователя называется - users, оно связанно с стандартным классом пользователя
@@ -19,11 +15,12 @@ class Person(models.Model):
     brand = models.CharField("Бренд", max_length=100, null=True, blank=False)
     model = models.CharField("Модель", max_length=100, null=True, blank=False)
     god = models.CharField("Год выпуска", max_length=100, null=True, blank=False)
-    iznos1 = models.IntegerField("Износ 1", null=True, blank=False)
-    iznos2 = models.IntegerField("Износ 2", null=True, blank=False)
-    iznos3 = models.IntegerField("Износ 3",  null=True, blank=False)
-    iznos4 = models.IntegerField("Износ 4", null=True, blank=False)
+    iznos1 = models.FloatField("Износ 1", null=True, blank=False)
+    iznos2 = models.FloatField("Износ 2", null=True, blank=False)
+    iznos3 = models.FloatField("Износ 3",  null=True, blank=False)
+    iznos4 = models.FloatField("Износ 4", null=True, blank=False)
     latki = models.CharField("Есть ли латки", max_length=100, null=True, blank=False)
+    sxod = models.CharField("Есть ли сход", max_length=100, null=True, blank=False)
     soglas = models.CharField("Согласен ли клиент", max_length=100, null=True, blank=False)
     cena  = models.CharField("Общая цена", max_length=100, null=True, blank=False)
     iznos = models.CharField("Общий износ", max_length=100, null=True, blank=False)
@@ -39,6 +36,32 @@ class Person(models.Model):
     class Meta:
         verbose_name = 'сотрудник'
         verbose_name_plural = 'все сотрудники'
+
+
+class Operations(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='operations', null=True)
+    shine = models.CharField("Шины",max_length=100, null=True, blank=False)
+    shirina = models.CharField("Ширина", max_length=100, null=True, blank=False)
+    profile = models.CharField("Профиль", max_length=100, null=True, blank=False)
+    radius = models.CharField("Радиус", max_length=100, null=True, blank=False)
+    brand = models.CharField("Бренд", max_length=100, null=True, blank=False)
+    model = models.CharField("Модель", max_length=100, null=True, blank=False)
+    god = models.CharField("Год выпуска", max_length=100, null=True, blank=False)
+    iznos1 = models.FloatField("Износ 1", null=True, blank=False)
+    iznos2 = models.FloatField("Износ 2", null=True, blank=False)
+    iznos3 = models.FloatField("Износ 3",  null=True, blank=False)
+    iznos4 = models.FloatField("Износ 4", null=True, blank=False)
+    sxod = models.CharField("Есть ли сход", max_length=100, null=True, blank=False)
+    latki = models.CharField("Есть ли латки", max_length=100, null=True, blank=False)
+    soglas = models.CharField("Согласен ли клиент", max_length=100, null=True, blank=False)
+    cena  = models.CharField("Общая цена", max_length=100, null=True, blank=False)
+    iznos = models.CharField("Общий износ", max_length=100, null=True, blank=False)
+    skidka = models.CharField("Скидка", max_length=100, null=True, blank=False)
+    ind = models.CharField("Индекс", max_length=100,  null=True, blank=False)
+
+    class Meta:
+        verbose_name = 'Операция'
+        verbose_name_plural = 'Операции'
 
 
 class Company(models.Model):

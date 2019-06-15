@@ -10,16 +10,17 @@ class Shins(forms.Form):
     profile = forms.CharField()
     radius = forms.CharField()
     brand = forms.CharField()
-    model = forms.CharField()
+
     god = forms.CharField()
-    iznos1 = forms.CharField()
-    iznos2 = forms.CharField()
-    iznos3 = forms.CharField()
-    iznos4 = forms.CharField()
+    iznos1 = forms.FloatField()
+    iznos2 = forms.FloatField()
+    iznos3 = forms.FloatField()
+    iznos4 = forms.FloatField()
     latki = forms.CharField()
+    sxod = forms.CharField()
     first_name = forms.CharField()
 
     class Meta:
         model = Person
-        fields = ('shine','shirina','profile','radius','brand','model','god','iznos1','iznos2','iznos3','iznos4',
-                  'latki','first_name',)
+        fields = ('shine','shirina','profile','radius','brand','god','iznos1','iznos2','iznos3','iznos4',
+                  'latki', 'sxod','first_name',)

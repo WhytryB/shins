@@ -18,10 +18,8 @@
         <div class="container">
 
 
-  <a class="navbar-brand" href="http://RusTires.ru">RusTires.ru</a>
-  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+ <a class="navbar-brand my-2 my-sm-0" href="/admin" style="color:black;">{{ request.user}} </a>
+
 
 
 
@@ -29,7 +27,7 @@
 
     </ul>
 
-    <a class=" my-2 my-sm-0" href="/admin" style="color:black;">{{ request.user}} </a>
+
       <a class=" my-2 my-sm-0" href="{% url 'authapp-logout' %}" style="color:black;">Выход</a>
 
 
@@ -77,7 +75,7 @@
                             <label for="username">Выберите размер</label>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select class="custom-select d-block w-100 p-0 ml-0 mr-0 mt-4 mb-4 mt-sm-4 mb-sm-4"  name="shirina" id="id_shirina" required>
+                                    <select class="custom-select d-block w-100 mt-4 mb-4"  name="shirina" id="id_shirina" required>
                                       <option value="175">175</option>
 
                                       <option value="185">185</option>
@@ -142,236 +140,59 @@
                                 <div class="col-md-4">
                                    <select class="custom-select d-block w-100 mt-4 mb-4"  name="brand" id="id_brand" required>
 
-                                    <option value="Acura" >
-                        Acura                    </option>
-                                    <option value="Alfa Romeo" >
-                        Alfa Romeo                    </option>
-                                    <option value="Alpine" >
-                        Alpine                    </option>
-                                    <option value="Aston Martin" >
-                        Aston Martin                    </option>
+                                    <option value="Pirelli" >
+                        Pirelli                    </option>
+                                    <option value="Continental" >
+                       Continental                    </option>
+                                    <option value="Michelin" >
+                        Michelin                   </option>
+                                    <option value="Nokian" >
+                        Nokian                    </option>
                                     <option value="Audi" >
                         Audi                    </option>
-                                    <option value="BMW" >
-                        BMW                    </option>
-                                    <option value="BMW Alpina" >
-                        BMW Alpina                    </option>
-                                    <option value="BYD" >
-                        BYD                    </option>
-                                    <option value="Bentley" >
-                        Bentley                    </option>
-                                    <option value="Brilliance" >
-                        Brilliance                    </option>
-                                    <option value="Bugatti" >
-                        Bugatti                    </option>
-                                    <option value="Buick" >
-                        Buick                    </option>
-                                    <option value="Cadillac" >
-                        Cadillac                    </option>
-                                    <option value="Changan" >
-                        Changan                    </option>
-                                    <option value="Chery" >
-                        Chery                    </option>
-                                    <option value="Chevrolet" >
-                        Chevrolet                    </option>
-                                    <option value="Chrysler" >
-                        Chrysler                    </option>
-                                    <option value="Citroen" >
-                        Citroen                    </option>
-                                    <option value="DS" >
-                        DS                    </option>
-                                    <option value="Dacia" >
-                        Dacia                    </option>
-                                    <option value="Daewoo" >
-                        Daewoo                    </option>
-                                    <option value="Daihatsu" >
-                        Daihatsu                    </option>
-                                    <option value="Datsun" >
-                        Datsun                    </option>
-                                    <option value="Dodge" >
-                        Dodge                    </option>
-                                    <option value="Dongfeng" >
-                        Dongfeng                    </option>
-                                    <option value="Eagle" >
-                        Eagle                    </option>
-                                    <option value="FAW" >
-                        FAW                    </option>
-                                    <option value="FAW Besturn" >
-                        FAW Besturn                    </option>
-                                    <option value="Ferrari" >
-                        Ferrari                    </option>
-                                    <option value="Fiat" >
-                        Fiat                    </option>
-                                    <option value="Fisker" >
-                        Fisker                    </option>
-                                    <option value="Force" >
-                        Force                    </option>
-                                    <option value="Ford" >
-                        Ford                    </option>
-                                    <option value="GEO" >
-                        GEO                    </option>
-                                    <option value="GMC" >
-                        GMC                    </option>
-                                    <option value="Geely" >
-                        Geely                    </option>
-                                    <option value="Genesis" >
-                        Genesis                    </option>
-                                    <option value="Great Wall" >
-                        Great Wall                    </option>
-                                    <option value="Haval" >
-                        Haval                    </option>
-                                    <option value="Hindustan" >
-                        Hindustan                    </option>
-                                    <option value="Holden" >
-                        Holden                    </option>
-                                    <option value="Honda" >
-                        Honda                    </option>
-                                    <option value="Hummer" >
-                        Hummer                    </option>
-                                    <option value="Hyundai" >
-                        Hyundai                    </option>
-                                    <option value="Infiniti" >
-                        Infiniti                    </option>
-                                    <option value="Isuzu" >
-                        Isuzu                    </option>
-                                    <option value="Iveco" >
-                        Iveco                    </option>
-                                    <option value="JAC" >
-                        JAC                    </option>
-                                    <option value="Jaguar" >
-                        Jaguar                    </option>
-                                    <option value="Jeep" >
-                        Jeep                    </option>
-                                    <option value="Jinbei" >
-                        Jinbei                    </option>
-                                    <option value="Kia" >
-                        Kia                    </option>
-                                    <option value="LADA" >
-                        LADA                    </option>
-                                    <option value="Lamborghini" >
-                        Lamborghini                    </option>
-                                    <option value="Lancia" >
-                        Lancia                    </option>
-                                    <option value="Land Rover" >
-                        Land Rover                    </option>
-                                    <option value="Lexus" >
-                        Lexus                    </option>
-                                    <option value="Lifan" >
-                        Lifan                    </option>
-                                    <option value="Lincoln" >
-                        Lincoln                    </option>
-                                    <option value="Lotus" >
-                        Lotus                    </option>
-                                    <option value="MG" >
-                        MG                    </option>
-                                    <option value="MINI" >
-                        MINI                    </option>
-                                    <option value="Mahindra" >
-                        Mahindra                    </option>
-                                    <option value="Maruti" >
-                        Maruti                    </option>
-                                    <option value="Maserati" >
-                        Maserati                    </option>
-                                    <option value="Mazda" >
-                        Mazda                    </option>
-                                    <option value="McLaren" >
-                        McLaren                    </option>
-                                    <option value="Mercedes-Benz" >
-                        Mercedes-Benz                    </option>
-                                    <option value="Mercury" >
-                        Mercury                    </option>
-                                    <option value="Mitsubishi" >
-                        Mitsubishi                    </option>
-                                    <option value="Mosler" >
-                        Mosler                    </option>
-                                    <option value="Nissan" >
-                        Nissan                    </option>
-                                    <option value="Oldsmobile" >
-                        Oldsmobile                    </option>
-                                    <option value="Opel" >
-                        Opel                    </option>
-                                    <option value="Panoz" >
-                        Panoz                    </option>
-                                    <option value="Perodua" >
-                        Perodua                    </option>
-                                    <option value="Peugeot" >
-                        Peugeot                    </option>
-                                    <option value="Plymouth" >
-                        Plymouth                    </option>
-                                    <option value="Polaris" >
-                        Polaris                    </option>
-                                    <option value="Pontiac" >
-                        Pontiac                    </option>
-                                    <option value="Porsche" >
-                        Porsche                    </option>
-                                    <option value="Proton" >
-                        Proton                    </option>
-                                    <option value="Ram" >
-                        Ram                    </option>
-                                    <option value="Ravon" >
-                        Ravon                    </option>
-                                    <option value="Renault" >
-                        Renault                    </option>
-                                    <option value="Renault Samsung" >
-                        Renault Samsung                    </option>
-                                    <option value="Roewe" >
-                        Roewe                    </option>
-                                    <option value="Rolls-Royce" >
-                        Rolls-Royce                    </option>
-                                    <option value="Rover" >
-                        Rover                    </option>
-                                    <option value="Saab" >
-                        Saab                    </option>
-                                    <option value="Saturn" >
-                        Saturn                    </option>
-                                    <option value="Scion" >
-                        Scion                    </option>
-                                    <option value="Seat" >
-                        Seat                    </option>
-                                    <option value="Skoda" >
-                        Skoda                    </option>
-                                    <option value="Smart" >
-                        Smart                    </option>
-                                    <option value="SsangYong" >
-                        SsangYong                    </option>
-                                    <option value="Subaru" >
-                        Subaru                    </option>
-                                    <option value="Suzuki" >
-                        Suzuki                    </option>
-                                    <option value="Tata" >
-                        Tata                    </option>
-                                    <option value="Tesla" >
-                        Tesla                    </option>
-                                    <option value="Toyota" >
-                        Toyota                    </option>
-                                    <option value="VAZ" >
-                        VAZ                    </option>
-                                    <option value="Vauxhall" >
-                        Vauxhall                    </option>
-                                    <option value="Venucia" >
-                        Venucia                    </option>
-                                    <option value="Volkswagen" >
-                        Volkswagen                    </option>
-                                    <option value="Volvo" >
-                        Volvo                    </option>
-                                    <option value="Vortex" >
-                        Vortex                    </option>
-                                    <option value="ZAZ" >
-                        ZAZ                    </option>
-                                    <option value="Zotye" >
-                        Zotye                    </option>
-                                    <option value="ГАЗ" >
-                        ГАЗ                    </option>
-                                    <option value="ТагАЗ" >
-                        ТагАЗ                    </option>
-                                    <option value="УАЗ" >
-                        УАЗ                    </option>
+                                    <option value="Toyo" >
+                        Toyo                   </option>
+                                    <option value="Yokohama" >
+                       Yokohama                    </option>
+                                    <option value="Dunlop" >
+                        Dunlop                    </option>
+                                    <option value="Bridgestone" >
+                        Bridgestone                   </option>
+                                    <option value="Goodyear" >
+                        Goodyear                    </option>
+                                    <option value="Kumho" >
+                        Kumho                    </option>
+                                    <option value="Hankook" >
+                        Hankook                    </option>
+                                    <option value="Nexen" >
+                        Nexen                    </option>
+                                    <option value="Gislaved" >
+                        Gislaved                    </option>
+                                    <option value="Firestone" >
+                        Firestone                    </option>
+                                    <option value="BFGoodrich" >
+                        BFGoodrich                    </option>
+                                    <option value="Matador" >
+                        Matador                    </option>
+                                    <option value="Barum" >
+                        Barum                    </option>
+                                    <option value="Falken" >
+                        Falken                    </option>
+                                    <option value="Viatti" >
+                        Viatti                    </option>
+                                    <option value="Tigar" >
+                        Tigar                    </option>
+                                    <option value="Barum" >
+                        Barum                    </option>
+                                    <option value="другой" >
+                        другой                    </option>
+
                             </select>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                       <select class="custom-select d-block w-100 mt-4 mb-4"  name="model" id="id_model" required>
-                                    </select>
+{#                                       <select class="custom-select d-block w-100 mt-4 mb-4"  name="model" id="id_model" required>#}
+{#                                    </select>#}
                                 </div>
                                 <div class="col-md-4">
 
@@ -500,18 +321,18 @@
                             <div class="row">
                                 <div class="col-md-3">
 
-                                  <input type="number" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos1" id="iznos1" required>
+                                  <input type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos1" id="iznos1" required>
                                 </div>
                                 <div class="col-md-3">
 
-                                     <input  type="number" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos2" id="iznos2" required>
+                                     <input  type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos2" id="iznos2" required>
                                 </div>
                                 <div class="col-md-3">
 
-                                      <input  type="number" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos3" id="iznos3" required>
+                                      <input  type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos3" id="iznos3" required>
                                 </div>
                                 <div class="col-md-3">
-                                     <input  type="number" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos4" id="iznos4" required>
+                                     <input  type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos4" id="iznos4" required>
                                 </div>
                             </div>
                         </div>
@@ -528,6 +349,25 @@
                                       <option value="Yes">Да, имеют</option>
 
                                       <option value="No">Нет, не имеют</option>
+
+
+                                    </select>
+
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+</div>
+                            </div>
+                            <div class="dropdown">
+</div>
+                        </div>
+                     <div class="row">
+                            <div class="mb-3 col-md-12">
+                                <label for="firstName">Есть ли следы неправильного сход развала:</label>
+
+                                <select class="custom-select d-block w-100 mt-3 mb-3"  name="sxod" id="id_sxod" required>
+                                      <option value="Yes">Да</option>
+
+                                      <option value="No">Нет</option>
 
 
                                     </select>
@@ -632,41 +472,41 @@
     </div>
 </div>
 
-<script type="text/javascript">
-// Создаем новый объект связанных списков
-var syncList1 = new syncList;
-
-// Определяем значения подчиненных списков (2 и 3 селектов)
-syncList1.dataList = {
-
-/* Определяем элементы второго списка в зависимости
-от выбранного значения в первом списке */
-
-  'Acura':{
-      'CDX':'CDX',
-      'Cl':'Cl',
-      'el':'EL'
-  },
-
-  'Alfa Romeo':{
-      'gtv':'GTV'
-  },
-
- 'Aston Martin':{
-      'db7':'DB7',
-      'v8':'V8'
-  },
-
-  'Alpine':{
-      'gta':'GTA'
-  },
-
-
-};
-
-// Включаем синхронизацию связанных списков
-syncList1.sync("id_brand","id_model");
-</script>
+{#<script type="text/javascript">#}
+{#// Создаем новый объект связанных списков#}
+{#var syncList1 = new syncList;#}
+{##}
+{#// Определяем значения подчиненных списков (2 и 3 селектов)#}
+{#syncList1.dataList = {#}
+{##}
+{#/* Определяем элементы второго списка в зависимости#}
+{#от выбранного значения в первом списке */#}
+{##}
+{#  'Acura':{#}
+{#      'CDX':'CDX',#}
+{#      'Cl':'Cl',#}
+{#      'el':'EL'#}
+{#  },#}
+{##}
+{#  'Alfa Romeo':{#}
+{#      'gtv':'GTV'#}
+{#  },#}
+{##}
+{# 'Aston Martin':{#}
+{#      'db7':'DB7',#}
+{#      'v8':'V8'#}
+{#  },#}
+{##}
+{#  'Alpine':{#}
+{#      'gta':'GTA'#}
+{#  },#}
+{##}
+{##}
+{#};#}
+{##}
+{#// Включаем синхронизацию связанных списков#}
+{#syncList1.sync("id_brand","id_model");#}
+{#</script>#}
 
 </body>
 </html>
