@@ -1,0 +1,24 @@
+[[source]]
+
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+
+[requires]
+
+python_version = "3.6"
+
+
+[packages]
+
+django = "*"
+python-decouple = "*"
+dj-database-url = "*"
+whitenoise = "*"
+gunicorn = "*"
+"psycopg2" = "*"
+djangorestframework = "*"
+Pillow = "*"
+
+[dev-packages]
