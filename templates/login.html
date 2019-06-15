@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+<body>
+{% for message in messages %}
+{% endfor %}
+<div class="container h-100">
+    <div class="row justify-content-center align-items-center  h-100" >
+      <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body my-3">
+              <i><h5 class="card-title text-center pb-3"><b>SHIN<a class="text-danger">SALE</a>.RU</b></h5></i>
+             <form method="POST" enctype="multipart/form-data" class="form form-signin">
+                 {% csrf_token %}
+              <div class="form-label-group">
+
+                    <div class="fieldWrapper">
+                        {{ user_form.username.errors }}
+
+
+                    </div>
+
+
+                  <input type="text" class="form-control"  name="username" value=""  placeholder="Username" required id="id_username">
+                <label for="inputEmail"></label>
+              </div>
+
+              <div class="form-label-group">
+
+                  <input type="password" class="form-control" name="sms_mes" placeholder="Password"  value="" required id="id_sms_mes">
+                <label for="inputPassword"></label>
+              </div>
+
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase btn-danger my-4" type="submit">ВОЙТИ</button>
+               </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
