@@ -71,6 +71,7 @@ class MainView(View):
     def post(self, request):
         global userna
         global index
+        index = ""
         form = Shins(request.POST)
         user_form = UsersForm2(request.POST)
         if form.is_valid():
