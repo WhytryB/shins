@@ -92,14 +92,15 @@ class MainView(View):
                 brand_wo = "С"
 
             iznos = ((float(iznos1) + float(iznos2) + float(iznos3) + float(iznos4))/4)
+            print(iznos , "iznos---")
             iznos_wo = ""
             if shine == "Шины, летние":
-                iznos = iznos/8
+                iznos =1 - (iznos/8)
                 iznos = iznos * 100
             elif shine == "Шины, зимние шипованные" or shine == "Шины, зимние нешипованные":
-                iznos = iznos/10
+                iznos = 1 - (iznos/10)
                 iznos = iznos * 100
-
+            print(iznos, "kon_iznos=====")
             if iznos >= 0 and iznos<= 15:
                 iznos_wo = "П"
             elif iznos > 15 and iznos <= 30:
