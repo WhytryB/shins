@@ -13,6 +13,7 @@ import datetime
 userna = "Ещё нет"
 index = ""
 
+
 def my_random_string(string_length=10):
     """Возвращает случайную строку"""  # а зачем случайная строка?
     """Возвращает случайную строку, нужно для отправки кода смс"""
@@ -45,10 +46,12 @@ class MainView(View):
                 person.soglas = "Нет"
             else:
                 sogla = "-"
-            with open('main/test.csv', 'a') as csvfile:
+
+            d = (str(index), str(sogla))
+            with open('main/sog.csv', 'a') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',',
                                         quotechar='"')
-                spamwriter.writerow(str(sogla))
+                spamwriter.writerow(d)
             person.save()
             o.save()
         except Exception:
@@ -263,6 +266,19 @@ class MainView(View):
         else:
             return render(request, self.template,
                       context={"form": form})
+
+def download_sog(request):
+    """
+    Функция для скачивания txt файла в посте
+    Запись в файл осуществяется стандартными библиотеками питона
+    :param slug:  url текущего поста
+    :return: возвращает ссылку на скачивания файла,
+    для пользователя это выглядит как всплывающее окно с продложенем сохранить файл
+    """
+    the_file = 'sog.csv'
+    # Формирование ссылки на скачивание пдф файла с текущей страницы
+    response = download_txt(the_file)
+    return response
 
 def download(request):
     """
