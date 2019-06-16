@@ -55,12 +55,20 @@
                             <div class="mb-3 col-md-12">
                                 <label for="firstName">Выберите тип товара</label>
 
-                                <select class="custom-select d-block w-100" name="shine" id="id_shine" required>
-                                  <option value="Шины, летние">Шины, летние</option>
+                                <select class="custom-select d-block w-100" name="shine" id="id_shine"
+                                            required>
+                                  <option  value="Шины, летние"
+                                  {% if shine == "Шины, летние" %}
+                                            selected
+                                          {% endif %}>Шины, летние</option>
 
-                                  <option value="Шины, зимние шипованные">Шины, зимние шипованные</option>
+                                  <option value="Шины, зимние шипованные"
+                                  {% if shine == "Шины, зимние шипованные" %}
+                                            selected
+                                          {% endif %}>Шины, зимние шипованные</option>
 
-                                  <option value="Шины, зимние нешипованные">Шины, зимние нешипованные</option>
+                                  <option value="Шины, зимние нешипованные"
+                                         > Шины, зимние нешипованные</option>
 
                                 </select>
 
@@ -76,30 +84,70 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <select class="custom-select d-block w-100 mt-4 mb-4"  name="shirina" id="id_shirina" required>
-                                      <option value="175">175</option>
+                                      <option {% if shirina == "175" %}
+                                            selected
+                                          {% endif %} value="175">175</option>
 
-                                      <option value="185">185</option>
+                                      <option {% if shirina == "185" %}
+                                            selected
+                                          {% endif %} value="185">185</option>
 
-                                      <option value="195">195</option>
+                                      <option  {% if shirina == "195" %}
+                                            selected
+                                          {% endif %}value="195">195</option>
 
-                                        <option value="205">205</option>
-                                        <option value="215">215</option>
-                                        <option value="225">225</option>
-                                        <option value="235">235</option>
-                                        <option value="245">245</option>
-                                        <option value="255">255</option>
-                                        <option value="265">265</option>
-                                        <option value="275">275</option>
-                                        <option value="285">285</option>
-                                        <option value="295">295</option>
-                                        <option value="305">305</option>
-                                        <option value="315">315</option>
+                                        <option {% if shirina == "205" %}
+                                            selected
+                                          {% endif %} value="205">205</option>
+                                        <option  {% if shirina == "215" %}
+                                            selected
+                                          {% endif %}value="215">215</option>
+                                        <option {% if shirina == "225" %}
+                                            selected
+                                          {% endif %} value="225">225</option>
+                                        <option {% if shirina == "235" %}
+                                            selected
+                                          {% endif %} value="235">235</option>
+                                        <option  {% if shirina == "245" %}
+                                            selected
+                                          {% endif %}
+                                                value="245">245</option>
+                                        <option  {% if shirina == "255" %}
+                                            selected
+                                          {% endif %} value="255">255</option>
+                                        <option  {% if shirina == "265" %}
+                                            selected
+                                          {% endif %} value="265">265</option>
+                                        <option  {% if shirina == "275" %}
+                                            selected
+                                          {% endif %} value="275">275</option>
+                                        <option  {% if shirina == "285" %}
+                                            selected
+                                          {% endif %} value="285">285</option>
+                                        <option  {% if shirina == "295" %}
+                                            selected
+                                          {% endif %} value="295">295</option>
+                                        <option  {% if shirina == "305" %}
+                                            selected
+                                          {% endif %}
+                                                value="305">305</option>
+                                        <option  {% if shirina == "315" %}
+                                            selected
+                                          {% endif %} value="315">315</option>
 
                                     </select>
                                 </div>
                                 <div class="col-md-4">
 
                                     <select class="custom-select d-block w-100 mt-4 mb-4"  name="profile" id="id_profile" required>
+                                      {% if profile %}
+                                     <option value="{{ profile }}"
+
+                                            selected
+                                         >{{ profile }}
+
+                                    </option>
+                                         {% endif %}
                                       <option value="35">35</option>
 
                                       <option value="40">40</option>
@@ -118,7 +166,14 @@
                                 <div class="col-md-4 mt-4 mb-4">
 
                                     <select class="custom-select d-block w-100"  name="radius" id="id_radius" required>
+                                        {% if radius %}
+                                     <option value="{{ radius }}"
 
+                                            selected
+                                         >{{ radius }}
+
+                                    </option>
+                                         {% endif %}
 
                                       <option value="15">15</option>
 
@@ -139,7 +194,14 @@
                             <div class="row">
                                 <div class="col-md-4">
                                    <select class="custom-select d-block w-100 mt-4 mb-4"  name="brand" id="id_brand" required>
+                                    {% if brand %}
+                                     <option value="{{ brand }}"
 
+                                            selected
+                                         >{{ brand }}
+
+                                    </option>
+                                         {% endif %}
                                     <option value="Pirelli" >
                         Pirelli                    </option>
                                     <option value="Continental" >
@@ -148,8 +210,7 @@
                         Michelin                   </option>
                                     <option value="Nokian" >
                         Nokian                    </option>
-                                    <option value="Audi" >
-                        Audi                    </option>
+
                                     <option value="Toyo" >
                         Toyo                   </option>
                                     <option value="Yokohama" >
@@ -197,6 +258,14 @@
                                 <div class="col-md-4">
 
                                      <select class="custom-select d-block w-100 mt-4 mb-4"  name="god" id="id_god" required>
+                                        {% if god %}
+                                     <option value="{{ god }}"
+
+                                            selected
+                                         >{{ god }}
+
+                                    </option>
+                                         {% endif %}
                                          <option value="2018">2019</option>
                                        <option value="2018">2018</option>
     <option value="2017">2017</option>
@@ -321,18 +390,29 @@
                             <div class="row">
                                 <div class="col-md-3">
 
-                                  <input type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos1" id="iznos1" required>
+                                  <input type="number"
+                                         {% if iznos1 %}
+                                            value = {{ iznos1 }}
+                                          {% endif %}
+                                         step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos1" id="iznos1" required>
                                 </div>
                                 <div class="col-md-3">
 
-                                     <input  type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos2" id="iznos2" required>
+                                     <input {% if iznos2 %}
+                                            value = {{ iznos2 }}
+                                          {% endif %} type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos2" id="iznos2" required>
                                 </div>
                                 <div class="col-md-3">
 
-                                      <input  type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos3" id="iznos3" required>
+                                      <input {% if iznos3 %}
+                                            value = {{ iznos3 }}
+                                          {% endif %} type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos3" id="iznos3" required>
                                 </div>
                                 <div class="col-md-3">
-                                     <input  type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos4" id="iznos4" required>
+
+                                     <input {% if iznos4 %}
+                                            value = {{ iznos4 }}
+                                          {% endif %} type="number" step="0.1" class="custom-select d-block w-100 mt-3 mb-3"  name="iznos4" id="iznos4" required>
                                 </div>
                             </div>
                         </div>
@@ -346,9 +426,17 @@
                                 <label for="firstName">Есть ли у товара протекторные латки или жгутики</label>
 
                                 <select class="custom-select d-block w-100 mt-3 mb-3"  name="latki" id="id_latki" required>
-                                      <option value="Yes">Да, имеют</option>
 
-                                      <option value="No">Нет, не имеют</option>
+                                      <option
+                                              {% if latki == "Да" %}
+                                            selected
+                                          {% endif %}
+                                              value="Yes">Да, имеют</option>
+
+                                      <option
+                                              {% if latki == "Нет" %}
+                                            selected
+                                          {% endif %}value="No">Нет, не имеют</option>
 
 
                                     </select>
@@ -365,9 +453,15 @@
                                 <label for="firstName">Есть ли следы неправильного сход развала:</label>
 
                                 <select class="custom-select d-block w-100 mt-3 mb-3"  name="sxod" id="id_sxod" required>
-                                      <option value="Yes">Да</option>
+                                      <option {% if sxod == "Да" %}
+                                            selected
+                                          {% endif %}
+                                    value="Yes">Да</option>
 
-                                      <option value="No">Нет</option>
+                                      <option {% if sxod == "Нет" %}
+                                            selected
+                                          {% endif %}
+                                              value="No">Нет</option>
 
 
                                     </select>
@@ -400,10 +494,10 @@
 </div>
                         </div>
                         <hr class="mb-4">
-                     {% if skidka %}
-                         <h5><b>Cкидка: {{ skidka }} руб.</b></h5>
-
-                        {% endif %}
+    {#                     {% if skidka %}#}
+    {#                         <h5><b>Cкидка: {{ skidka }} руб.</b></h5>#}
+    {##}
+    {#                        {% endif %}#}
                         {% if cena %}
                              <h5><b>Цена (руб.): {{ cena }} </b></h5>
 
@@ -443,26 +537,36 @@
 
 				<div class="col-md-2  order-md-2 mb-2">
 
-                    <ul class="list-group mb-0 p-0 text-left float-none shadow-none">
-                        <li class="list-group-item justify-content-between lh-condensed d-flex mt-3 mb-3 text-center p-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:100px;">
-                            <span class="text-muted text-center"><font color="#212529">Боковые латки - {{ latki }}</font></span>
+                    <ul class="list-group mb-0 p-0 text-left float-none shadow-none text-center">
+
+                        <li class="list-group-item justify-content-between lh-condensed d-flex mt-3 mb-3 text-center p-3 text-center wid" style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:100px;">
+                            <span class="tex "><font color="#212529"><b>Боковые<br>латки</b><br>
+                                {% if latki %}- {{ latki }}
+                                {% endif %}</font></span>
+
+
+
                         </li>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed mt-3 mb-3">
-                            <span class="text-muted text-center"><font color="#212529" class="text-center">Износ {{ iznos }} %</font></span>
+
+                        <li class="list-group-item d-flex justify-content-between lh-condensed mt-3 mb-3 wid">
+                            <span class="tex"><font color="#212529" class="text-center"><b>Износ</b>
+                                {% if iznos %}{{ iznos }}  % {% endif %}</font></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed mt-3 mb-3">
+
+                        <li class="list-group-item d-flex justify-content-between lh-condensed mt-3 mb-3 wid">
                             <div>
                                 <h6 >Онлайн оценка</h6>
                                 <font ><span style="font-size: 12.8px;" class="text-center">8 (926) 721-12-12</span></font>
                             </div>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between bg-light mt-3 mb-3">
+                        <li class="list-group-item d-flex justify-content-between mt-3 mb-3 wid">
                             <div class="text-center">
                                 <h6 >Тех. Помощь</h6>
                                 <small>8 (926) 721-21-12</small>
                             </div>
                         </li>
                     </ul>
+
 
 				</div>
 			</div>

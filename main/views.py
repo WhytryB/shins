@@ -91,14 +91,14 @@ class MainView(View):
             elif brand in standard:
                 brand_wo = "С"
 
-            iznos = (float(iznos1) + float(iznos2) + float(iznos3) + float(iznos4))/4
+            iznos = ((float(iznos1) + float(iznos2) + float(iznos3) + float(iznos4))/4)
             iznos_wo = ""
             if shine == "Шины, летние":
                 iznos = iznos/8
-                iznos = iznos * 10
+                iznos = iznos * 100
             elif shine == "Шины, зимние шипованные" or shine == "Шины, зимние нешипованные":
                 iznos = iznos/10
-                iznos = iznos * 10
+                iznos = iznos * 100
 
             if iznos >= 0 and iznos<= 15:
                 iznos_wo = "П"
@@ -118,12 +118,27 @@ class MainView(View):
 
             right_column = brand_wo + '/' + iznos_wo + '/' + god_wo
             print(right_column)
-            file_obj = open("main/Estimation.csv")
-            reader = csv.DictReader(file_obj, delimiter=',')
-            spisok = {}
-            for line in reader:
-                d = {line["Размер"]:line[right_column]}
-                spisok.update(d)
+            if shine == "Шины, летние":
+                file_obj = open("main/Leto.csv")
+                reader = csv.DictReader(file_obj, delimiter=',')
+                spisok = {}
+                for line in reader:
+                    d = {line["Размер"]:line[right_column]}
+                    spisok.update(d)
+            elif shine == "Шины, зимние шипованные":
+                file_obj = open("main/Wip.csv")
+                reader = csv.DictReader(file_obj, delimiter=',')
+                spisok = {}
+                for line in reader:
+                    d = {line["Размер"]: line[right_column]}
+                    spisok.update(d)
+            else:
+                file_obj = open("main/NeWip.csv")
+                reader = csv.DictReader(file_obj, delimiter=',')
+                spisok = {}
+                for line in reader:
+                    d = {line["Размер"]: line[right_column]}
+                    spisok.update(d)
 
             cena = spisok.get(left_colum)
             print(cena)
@@ -188,6 +203,15 @@ class MainView(View):
             person.save()
 
             index = my_random_string()
+            f1 = open("main/result.txt", 'a')
+            f1.write("person="+ str(fio[0] +" " + fio[1] + " " + fio[2])  + ";" + "shine=" + str(shine) +";" + "shirina=" + str(shirina) + ";"+
+                     "profile=" + str(profile) +
+                     "radius=" + radius + ";" + "brand=" + brand + ";"+"god=" + str(god) + ";" + "iznos1=" + str(iznos1) +
+                     "iznos2 =" + str(iznos2) + ";" + "iznos3 =" + str(iznos3) + ";" +
+                     "iznos4 =" + str(iznos4) + ";" + "latki =" + latki + ";" + "sxod=" + sxod + ";" +
+                     "cena =" + str(cena) + ";" + "iznos =" + str(iznos) + ";" + "skidka =" + str(skidka1 + skidka2) +";" +
+                     "ind=" +str(index) + ";" +"\n")
+            f1.close()
             operatins = Operations.objects.create(person=person, shine=shine, shirina=shirina, profile=profile,
                                                   radius=radius, brand=brand, god=god, iznos1=float(iznos1),
                                                   iznos2 = float(iznos2), iznos3 = float(iznos3),
@@ -201,9 +225,53 @@ class MainView(View):
             a = Company.objects.get(users__username=request.user)
             a = a.person.all()
 
-            return render(request, self.template, context={'form': form, "cena":cena, "iznos":iznos, "latki":latki, "sxod":sxod,
-                                                           "skidka":skidka1 + skidka2, "hide":hide, "b": a})
+            return render(request, self.template, context={'form': form, "cena":cena, "shine":shine, "iznos":iznos,
+                                                           "latki":latki, "sxod":sxod, "shirina" : shirina,
+                                                            "profile":profile,
+                                                            'radius':radius,
+                                                            'brand' : brand,
+                                                            # person.model = model
+                                                            'god' : god,
+                                                            'iznos1' : float(iznos1),
+                                                            'iznos2' : float(iznos2),
+                                                            'iznos3' : float(iznos3),
+                                                            'iznos4' : float(iznos4),
+                                                            "skidka":skidka1 + skidka2, "hide":hide, "b": a})
 
         else:
             return render(request, self.template,
                       context={"form": form})
+
+def download(request):
+    """
+    Функция для скачивания txt файла в посте
+    Запись в файл осуществяется стандартными библиотеками питона
+    :param slug:  url текущего поста
+    :return: возвращает ссылку на скачивания файла,
+    для пользователя это выглядит как всплывающее окно с продложенем сохранить файл
+    """
+    the_file = 'main/result.txt'
+    # Формирование ссылки на скачивание пдф файла с текущей страницы
+    response = download_txt(the_file)
+    return response
+
+import mimetypes
+from django.http import StreamingHttpResponse
+from wsgiref.util import FileWrapper
+import os
+
+
+
+def download_txt(the_file):
+    """
+    Функция для формирования ссылки для скачивания, а так же заворачивание файла с помощью библиотек в нужный респонс
+    :param the_file: Файл для обработки
+    :return:респонс с ссылкой на скачивание
+    """
+    filename = os.path.basename(the_file)
+    chunk_size = 8192  # Размер символов в имени файла, используется стандартный для бд
+    response = StreamingHttpResponse(FileWrapper(open(the_file, 'rb'), chunk_size),
+                                     content_type=mimetypes.guess_type(the_file)[0])
+    response['Content-Length'] = os.path.getsize(the_file)  # Определение длины файла
+    response['Content-Disposition'] = "attachment; filename=%s" % filename  # Отображение при скачивании файла
+    return response

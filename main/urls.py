@@ -6,4 +6,5 @@ from .views import *
 
 urlpatterns = [
     path('',MainView.as_view(), name='main'),
+    path('download', download, name='download')
 ]
