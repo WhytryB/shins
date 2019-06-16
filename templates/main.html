@@ -520,7 +520,7 @@
                         <div class="row">
                             <div  class="col-md-6">
                                <div id="result"></div>
-                                {% if hide != True and hide2 != True%}
+                                {% if hide != True or hide2 != True %}
 
 
                                 <button id="myButton" class="btn btn-primary btn-danger btn-lg btn-block" type="submit"><b>Рассчитать стоимость</b></button>
@@ -529,7 +529,7 @@
                             </div>
                         </div>
                     </form>
-                     {% if hide == True %}
+                     {% if hide == True and hide2 == True %}
                          <form method="GET"   enctype="multipart/form-data" class="form form-signin needs-validation">
                         {% csrf_token %}
                       <div class="row">

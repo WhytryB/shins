@@ -46,8 +46,8 @@ class MainView(View):
             else:
                 sogla = "-"
             with open('main/test.csv', 'a') as csvfile:
-                spamwriter = csv.writer(csvfile, delimiter=' ',
-                                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                spamwriter = csv.writer(csvfile, delimiter=',',
+                                        quotechar='"')
                 spamwriter.writerow(str(sogla))
             person.save()
             o.save()
@@ -227,8 +227,8 @@ class MainView(View):
                  str(index), str(request.user), str(datetime.datetime.now()))
             print(d)
             with open('main/test.csv', 'a') as csvfile:
-                spamwriter = csv.writer(csvfile, delimiter=' ',
-                                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                spamwriter = csv.writer(csvfile, delimiter=',',
+                                        quotechar='"')
                 spamwriter.writerow(d)
 
 
