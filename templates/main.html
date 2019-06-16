@@ -478,9 +478,21 @@
                                 <label for="firstName">Фио сотрудника</label>
 
                                     <select class="custom-select d-block w-100 mt-3 mb-3"  name="first_name" id="id_first_name" required>
+                                       {% if fio %}
+                                             <option
+
+                                            selected
+
+                                                    value="{{ fio }}">{{ fio }}</option>{% endif %}
+                                     {% if not fio %}
                                          {% for i in b.all %}
-                                            <option value="{{ i }}">{{ i }}</option>
+
+
+                                            <option value="{{ i }}">{{ i }}</option
+                                                    >
+
                                         {% endfor %}
+                                     {% endif %}
 
 
 
@@ -498,14 +510,17 @@
     {#                         <h5><b>Cкидка: {{ skidka }} руб.</b></h5>#}
     {##}
     {#                        {% endif %}#}
-                        {% if cena %}
+                        {% if cena and mes == True%}
                              <h5><b>Цена (руб.): {{ cena }} </b></h5>
 
+                        {% endif %}
+                        {% if  mes == False%}
+                            <h5><b>Шины непригодны для дальнейшей эксплуатации </b></h5>
                         {% endif %}
                         <div class="row">
                             <div  class="col-md-6">
                                <div id="result"></div>
-                                {% if hide != True %}
+                                {% if hide != True and hide2 != True%}
 
 
                                 <button id="myButton" class="btn btn-primary btn-danger btn-lg btn-block" type="submit"><b>Рассчитать стоимость</b></button>

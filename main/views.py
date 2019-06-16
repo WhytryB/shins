@@ -7,6 +7,8 @@ from django.views.generic import View
 import csv
 import re
 import uuid
+import csv
+import datetime
 
 userna = "Ещё нет"
 index = ""
@@ -33,13 +35,20 @@ class MainView(View):
             o = Operations.objects.get(ind=index)
 
             if 'yes' in request.GET:
-
+                sogla = "Клиент согласен"
                 person.soglas = "Да"
                 o.soglas = "Да"
 
             elif 'no' in request.GET:
+                sogla = "Клиент не согласен"
                 o.soglas = "Нет"
                 person.soglas = "Нет"
+            else:
+                sogla = "-"
+            with open('main/test.csv', 'a') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=' ',
+                                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                spamwriter.writerow(str(sogla))
             person.save()
             o.save()
         except Exception:
@@ -143,12 +152,19 @@ class MainView(View):
 
             cena = spisok.get(left_colum)
             print(cena)
-            if cena == None:
+            if cena == None :
                 cena = "Не правильно выбранны параметры"
+
                 hide = False
             else:
                 hide = True
 
+            if iznos > 55:
+                mes = False
+                hide1 = False
+            else:
+                hide1 = True
+                mes = True
             if latki == "Yes":
                 latki = "Да"
                 try:
@@ -204,15 +220,19 @@ class MainView(View):
             person.save()
 
             index = my_random_string()
-            f1 = open("main/result.txt", 'a')
-            f1.write("person="+ str(fio[0] +" " + fio[1] + " " + fio[2])  + ";" + "shine=" + str(shine) +";" + "shirina=" + str(shirina) + ";"+
-                     "profile=" + str(profile) +
-                     "radius=" + radius + ";" + "brand=" + brand + ";"+"god=" + str(god) + ";" + "iznos1=" + str(iznos1) +
-                     "iznos2 =" + str(iznos2) + ";" + "iznos3 =" + str(iznos3) + ";" +
-                     "iznos4 =" + str(iznos4) + ";" + "latki =" + latki + ";" + "sxod=" + sxod + ";" +
-                     "cena =" + str(cena) + ";" + "iznos =" + str(iznos) + ";" + "skidka =" + str(skidka1 + skidka2) +";" +
-                     "ind=" +str(index) + ";" +"\n")
-            f1.close()
+
+            d = (str(fio[0] +" " + fio[1] + " " + fio[2]), str(shine) ,  str(shirina) , str(profile) ,
+                      radius , brand , str(god),  str(iznos1) ,
+                     str(iznos2) , str(iznos3) , str(iznos4) , latki , sxod , str(cena), str(iznos) , str(skidka1 + skidka2) ,
+                 str(index), str(request.user), str(datetime.datetime.now()))
+            print(d)
+            with open('main/test.csv', 'a') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=' ',
+                                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                spamwriter.writerow(d)
+
+
+
             operatins = Operations.objects.create(person=person, shine=shine, shirina=shirina, profile=profile,
                                                   radius=radius, brand=brand, god=god, iznos1=float(iznos1),
                                                   iznos2 = float(iznos2), iznos3 = float(iznos3),
@@ -237,7 +257,8 @@ class MainView(View):
                                                             'iznos2' : float(iznos2),
                                                             'iznos3' : float(iznos3),
                                                             'iznos4' : float(iznos4),
-                                                            "skidka":skidka1 + skidka2, "hide":hide, "b": a})
+                                                            "skidka":skidka1 + skidka2, "hide2":hide1,
+                                                           "hide":hide, "b": a, "fio":first_name, "mes":mes})
 
         else:
             return render(request, self.template,
@@ -251,7 +272,7 @@ def download(request):
     :return: возвращает ссылку на скачивания файла,
     для пользователя это выглядит как всплывающее окно с продложенем сохранить файл
     """
-    the_file = 'main/result.txt'
+    the_file = 'main/test.csv'
     # Формирование ссылки на скачивание пдф файла с текущей страницы
     response = download_txt(the_file)
     return response
