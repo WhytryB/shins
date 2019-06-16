@@ -156,7 +156,7 @@ class MainView(View):
             cena = spisok.get(left_colum)
             print(cena)
             if cena == None :
-                cena = "Не правильно выбранны параметры"
+                cena = "Неправильно выбраны параметры"
 
                 hide = False
             else:
@@ -275,7 +275,7 @@ def download_sog(request):
     :return: возвращает ссылку на скачивания файла,
     для пользователя это выглядит как всплывающее окно с продложенем сохранить файл
     """
-    the_file = 'sog.csv'
+    the_file = 'main/sog.csv'
     # Формирование ссылки на скачивание пдф файла с текущей страницы
     response = download_txt(the_file)
     return response

@@ -53,7 +53,7 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="mb-3 col-md-12">
-                                <label for="firstName">Выберите тип товара</label>
+                                <label for="firstName">Выберите тип товара:</label>
 
                                 <select class="custom-select d-block w-100" name="shine" id="id_shine"
                                             required>
@@ -80,7 +80,7 @@
 </div>
                         </div>
                         <div class="mb-3">
-                            <label for="username">Выберите размер</label>
+                            <label for="username">Выберите размер:</label>
                             <div class="row">
                                 <div class="col-md-4">
                                     <select class="custom-select d-block w-100 mt-4 mb-4"  name="shirina" id="id_shirina" required>
@@ -190,7 +190,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="username">Выберите бренд, модель и год выпуска:</label>
+                            <label for="username">Выберите бренд и год выпуска</label>
                             <div class="row">
                                 <div class="col-md-4">
                                    <select class="custom-select d-block w-100 mt-4 mb-4"  name="brand" id="id_brand" required>
@@ -423,7 +423,7 @@
                         </div>
                         <div class="row">
                             <div class="mb-3 col-md-12">
-                                <label for="firstName">Есть ли у товара протекторные латки или жгутики</label>
+                                <label for="firstName">Есть ли у товара протекторные латки или жгутики?</label>
 
                                 <select class="custom-select d-block w-100 mt-3 mb-3"  name="latki" id="id_latki" required>
 
@@ -450,7 +450,7 @@
                         </div>
                      <div class="row">
                             <div class="mb-3 col-md-12">
-                                <label for="firstName">Есть ли следы неправильного сход развала:</label>
+                                <label for="firstName">Есть ли следы неправильного сход-развала</label>
 
                                 <select class="custom-select d-block w-100 mt-3 mb-3"  name="sxod" id="id_sxod" required>
                                       <option {% if sxod == "Да" %}
@@ -475,7 +475,7 @@
                         </div>
                         <div class="row">
                             <div class="mb-3 col-md-12">
-                                <label for="firstName">Фио сотрудника</label>
+                                <label for="firstName">ФИО сотруднка</label>
 
                                     <select class="custom-select d-block w-100 mt-3 mb-3"  name="first_name" id="id_first_name" required>
                                        {% if fio %}
