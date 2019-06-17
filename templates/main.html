@@ -60,7 +60,7 @@
                             <div class="col-md-12">
 
 
-                                <select class="custom-select d-block w-100 mt-4 mb-4" name="shine" id="id_shine"
+                                <select class="custom-select d-block w-100 mt-3 mb-3" name="shine" id="id_shine"
                                             required>
                                   <option  value="Шины, летние"
                                   {% if shine == "Шины, летние" %}
@@ -89,7 +89,7 @@
                             <label for="username">Выберите размер:&nbsp;</label>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select class="custom-select d-block w-100 mt-4 mb-4"  name="shirina" id="id_shirina" required>
+                                    <select class="custom-select d-block w-100 mt-3 mb-3"  name="shirina" id="id_shirina" required>
                                       <option {% if shirina == "175" %}
                                             selected
                                           {% endif %} value="175">175</option>
@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="col-md-4">
 
-                                    <select class="custom-select d-block w-100 mt-4 mb-4"  name="profile" id="id_profile" required>
+                                    <select class="custom-select d-block w-100 mt-3 mb-3"  name="profile" id="id_profile" required>
                                       {% if profile %}
                                      <option value="{{ profile }}"
 
@@ -169,7 +169,7 @@
 
                                     </select>
                                 </div>
-                                <div class="col-md-4 mt-4 mb-4">
+                                <div class="col-md-4 mt-3 mb-3">
 
                                     <select class="custom-select d-block w-100"  name="radius" id="id_radius" required>
                                         {% if radius %}
@@ -199,7 +199,7 @@
                             <label for="username">Выберите бренд и год выпуска:</label>
                             <div class="row">
                                 <div class="col-md-4">
-                                   <select class="custom-select d-block w-100 mt-4 mb-4"  name="brand" id="id_brand" required>
+                                   <select class="custom-select d-block w-100 mt-3 mb-3"  name="brand" id="id_brand" required>
                                     {% if brand %}
                                      <option value="{{ brand }}"
 
@@ -260,7 +260,7 @@
 
                                 <div class="col-md-4">
 
-                                     <select class="custom-select d-block w-100 mt-4 mb-4"  name="god" id="id_god" required>
+                                     <select class="custom-select d-block w-100 mt-3 mb-3"  name="god" id="id_god" required>
                                         {% if god %}
                                      <option value="{{ god }}"
 
@@ -424,8 +424,10 @@
                                 Please enter a valid email address for shipping updates.
 </div>
                         </div>
-                        <div class="row">
-                            <div class="mb-3 col-md-12">
+
+                            <div class="mb-3">
+                             <div class="row">
+                                <div class="col-md-12">
                                 <label for="firstName">Есть ли у товара протекторные латки или жгутики?</label>
 
                                 <select class="custom-select d-block w-100 mt-3 mb-3"  name="latki" id="id_latki" required>
@@ -447,7 +449,7 @@
                                 <div class="invalid-feedback">
                                     Valid first name is required.
 </div>
-                            </div>
+                                </div></div>
                             <div class="dropdown">
 </div>
                         </div>
