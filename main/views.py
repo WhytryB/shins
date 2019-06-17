@@ -204,47 +204,47 @@ class MainView(View):
             person = Person.objects.get(first_name=fio[0],second_name=fio[1],
                                         third_name=fio[2])
 
+            if cena != "Неправильно выбраны параметры":
+                person.shine = shine
+                person.shirina = shirina
+                person.profile = profile
+                person.radius = radius
+                person.brand = brand
+                # person.model = model
+                person.god = god
+                person.iznos1 = float(iznos1)
+                person.iznos2 = float(iznos2)
+                person.iznos3 = float(iznos3)
+                person.iznos4 = float(iznos4)
+                person.latki = latki
+                person.sxod = sxod
+                person.cena = cena
+                person.iznos = iznos
+                person.skidka = skidka2 + skidka1
+                person.save()
 
-            person.shine = shine
-            person.shirina = shirina
-            person.profile = profile
-            person.radius = radius
-            person.brand = brand
-            # person.model = model
-            person.god = god
-            person.iznos1 = float(iznos1)
-            person.iznos2 = float(iznos2)
-            person.iznos3 = float(iznos3)
-            person.iznos4 = float(iznos4)
-            person.latki = latki
-            person.sxod = sxod
-            person.cena = cena
-            person.iznos = iznos
-            person.skidka = skidka2 + skidka1
-            person.save()
+                index = my_random_string()
 
-            index = my_random_string()
-
-            d = (str(fio[0] +" " + fio[1] + " " + fio[2]), str(shine) ,  str(shirina) , str(profile) ,
-                      radius , brand , str(god),  str(iznos1) ,
-                     str(iznos2) , str(iznos3) , str(iznos4) , latki , sxod , str(cena), str(iznos) , str(skidka1 + skidka2) ,
-                 str(index), str(request.user), str(datetime.datetime.now()))
-            print(d)
-            with open('main/test.csv', 'a') as csvfile:
-                spamwriter = csv.writer(csvfile, delimiter=',',
-                                        quotechar='"')
-                spamwriter.writerow(d)
+                d = (str(fio[0] +" " + fio[1] + " " + fio[2]), str(shine) ,  str(shirina) , str(profile) ,
+                          radius , brand , str(god),  str(iznos1) ,
+                         str(iznos2) , str(iznos3) , str(iznos4) , latki , sxod , str(cena), str(iznos) , str(skidka1 + skidka2) ,
+                     str(index), str(request.user), str(datetime.datetime.now()))
+                print(d)
+                with open('main/test.csv', 'a') as csvfile:
+                    spamwriter = csv.writer(csvfile, delimiter=',',
+                                            quotechar='"')
+                    spamwriter.writerow(d)
 
 
 
-            operatins = Operations.objects.create(person=person, shine=shine, shirina=shirina, profile=profile,
-                                                  radius=radius, brand=brand, god=god, iznos1=float(iznos1),
-                                                  iznos2 = float(iznos2), iznos3 = float(iznos3),
-                                                  iznos4 = float(iznos4), latki = latki, sxod=sxod,
-                                                  cena = cena, iznos = iznos, skidka = skidka1 + skidka2,
-                                                  ind=index)
-            operatins.save()
-            userna = fio
+                operatins = Operations.objects.create(person=person, shine=shine, shirina=shirina, profile=profile,
+                                                      radius=radius, brand=brand, god=god, iznos1=float(iznos1),
+                                                      iznos2 = float(iznos2), iznos3 = float(iznos3),
+                                                      iznos4 = float(iznos4), latki = latki, sxod=sxod,
+                                                      cena = cena, iznos = iznos, skidka = skidka1 + skidka2,
+                                                      ind=index)
+                operatins.save()
+                userna = fio
 
 
             a = Company.objects.get(users__username=request.user)
