@@ -34,8 +34,9 @@ class MainView(View):
                                         third_name=userna[2])
 
             o = Operations.objects.get(ind=index)
-
+            print("1")
             if 'yes' in request.GET:
+                print("12")
                 sogla = "Клиент согласен"
                 person.soglas = "Да"
                 o.soglas = "Да"
@@ -46,6 +47,7 @@ class MainView(View):
                     spamwriter.writerow(d)
 
             elif 'no' in request.GET:
+                print("13")
                 sogla = "Клиент не согласен"
                 o.soglas = "Нет"
                 person.soglas = "Нет"
@@ -55,8 +57,6 @@ class MainView(View):
                                             quotechar='"')
                     spamwriter.writerow(d)
 
-
-          
             person.save()
             o.save()
         except Exception:
