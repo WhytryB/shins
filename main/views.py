@@ -39,19 +39,24 @@ class MainView(View):
                 sogla = "Клиент согласен"
                 person.soglas = "Да"
                 o.soglas = "Да"
+                d = (str(index), str(sogla))
+                with open('main/sog.csv', 'a') as csvfile:
+                    spamwriter = csv.writer(csvfile, delimiter=',',
+                                            quotechar='"')
+                    spamwriter.writerow(d)
 
             elif 'no' in request.GET:
                 sogla = "Клиент не согласен"
                 o.soglas = "Нет"
                 person.soglas = "Нет"
-            else:
-                sogla = "-"
+                d = (str(index), str(sogla))
+                with open('main/sog.csv', 'a') as csvfile:
+                    spamwriter = csv.writer(csvfile, delimiter=',',
+                                            quotechar='"')
+                    spamwriter.writerow(d)
 
-            d = (str(index), str(sogla))
-            with open('main/sog.csv', 'a') as csvfile:
-                spamwriter = csv.writer(csvfile, delimiter=',',
-                                        quotechar='"')
-                spamwriter.writerow(d)
+
+          
             person.save()
             o.save()
         except Exception:
