@@ -30,18 +30,16 @@ class MainView(View):
         global index
         form = Shins()
 
-        try:
-            o = Operations.objects.get(ind=index)
-        except:
-            print('Error suka')
+
+        o = Operations.objects.get(ind=index)
+
         print("1")
         if 'yes' in request.GET:
             print("12")
             sogla = "Клиент согласен"
-            try:
-                o.soglas = "Да"
-            except:
-                print("error1")
+
+            o.soglas = "Да"
+
             d = (str(index), str(sogla))
             with open('main/sog.csv', 'a') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',',
@@ -51,10 +49,9 @@ class MainView(View):
         elif 'no' in request.GET:
             print("13")
             sogla = "Клиент не согласен"
-            try:
-                o.soglas = "Нет"
-            except:
-                print("error2")
+       
+            o.soglas = "Нет"
+
             d = (str(index), str(sogla))
             with open('main/sog.csv', 'a') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',',
