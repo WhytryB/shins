@@ -25,3 +25,9 @@ text-align: center;
      height: 2em;  /* не в % */
   line-height: 2em; /* не поддерживается Opera Mini [opera.com] */
 }
+
+.bg-red{
+    background: #bc0000 !important;
+    color: #bc0000 !important;
+    background-color: #bc0000 !important;
+}
