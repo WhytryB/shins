@@ -31,7 +31,7 @@ class MainView(View):
         form = Shins()
 
 
-        o = Operations.objects.get(ind=index)
+        o = Operations.objects.filter(ind=index)
 
         print("1")
         if 'yes' in request.GET:
@@ -49,7 +49,7 @@ class MainView(View):
         elif 'no' in request.GET:
             print("13")
             sogla = "Клиент не согласен"
-       
+
             o.soglas = "Нет"
 
             d = (str(index), str(sogla))
