@@ -29,37 +29,41 @@ class MainView(View):
         global userna
         global index
         form = Shins()
+
         try:
-            person = Person.objects.get(first_name=userna[0], second_name=userna[1],
-                                        third_name=userna[2])
-
             o = Operations.objects.get(ind=index)
-            print("1")
-            if 'yes' in request.GET:
-                print("12")
-                sogla = "Клиент согласен"
-                person.soglas = "Да"
+        except:
+            print('Error suka')
+        print("1")
+        if 'yes' in request.GET:
+            print("12")
+            sogla = "Клиент согласен"
+            try:
                 o.soglas = "Да"
-                d = (str(index), str(sogla))
-                with open('main/sog.csv', 'a') as csvfile:
-                    spamwriter = csv.writer(csvfile, delimiter=',',
-                                            quotechar='"')
-                    spamwriter.writerow(d)
+            except:
+                print("error1")
+            d = (str(index), str(sogla))
+            with open('main/sog.csv', 'a') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=',',
+                                        quotechar='"')
+                spamwriter.writerow(d)
 
-            elif 'no' in request.GET:
-                print("13")
-                sogla = "Клиент не согласен"
+        elif 'no' in request.GET:
+            print("13")
+            sogla = "Клиент не согласен"
+            try:
                 o.soglas = "Нет"
-                person.soglas = "Нет"
-                d = (str(index), str(sogla))
-                with open('main/sog.csv', 'a') as csvfile:
-                    spamwriter = csv.writer(csvfile, delimiter=',',
-                                            quotechar='"')
-                    spamwriter.writerow(d)
+            except:
+                print("error2")
+            d = (str(index), str(sogla))
+            with open('main/sog.csv', 'a') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=',',
+                                        quotechar='"')
+                spamwriter.writerow(d)
 
-            person.save()
+        try:
             o.save()
-        except Exception:
+        except:
             pass
         try:
             a = Company.objects.get(users__username=request.user)
