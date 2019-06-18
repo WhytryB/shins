@@ -8,12 +8,20 @@
     max-width: 170px;
     min-height: 100px;
     max-height: 100px;
-
+    font-size: 14px !important;
 }
 
 .tex{
-     transform: translate(-50%, -50%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
+    text-align: center !important;
+}
+
+li {
+
+text-align: center;
+
+}
+
+.pad{
+     height: 2em;  /* не в % */
+  line-height: 2em; /* не поддерживается Opera Mini [opera.com] */
 }
