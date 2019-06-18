@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <script type="text/javascript" src="{% static 'linkedselect.js' %}"></script>
     <meta charset="UTF-8">
@@ -540,12 +540,15 @@
 
                       <div class="row">
                             <div  class="col-md-6">
+                    <input value="{{ ind }}" name="mytextbox" style="display: none"/>
+                    <button id="myButton" name="yes" value="yes"
 
-                    <button id="myButton" name="yes" value="yes"   class="btn btn-primary btn-danger btn-lg btn-block" type="submit"><b>Клиент согласен</b></button>
+                            class="btn btn-primary btn-danger btn-lg btn-block" type="submit"><b>Клиент согласен</b></button>
                          </div>
                             <div  class="col-md-6">
 
-                    <button id="myButton" name="no" value="no" class="btn btn-primary btn-lg btn-block" type="submit"><b>Клиент отказался</b></button>
+                    <button id="myButton" name="no" value="no"
+                            class="btn btn-primary btn-lg btn-block" type="submit"><b>Клиент отказался</b></button>
                          </div>
                         </div>
                          </form>

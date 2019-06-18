@@ -9,9 +9,10 @@ import re
 import uuid
 import csv
 import datetime
+from django.http import HttpResponse,  HttpResponseRedirect
+
 
 userna = "Ещё нет"
-index = ""
 
 
 def my_random_string(string_length=10):
@@ -22,51 +23,61 @@ def my_random_string(string_length=10):
     random = random.replace("-", "")
     return random[0:string_length]
 
+
+
+def post_nesog(request, ind):
+    d = (str(ind), "Клиент не согласен")
+    with open('main/sog.csv', 'a') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter=',',
+                                quotechar='"')
+        spamwriter.writerow(d)
+    return HttpResponseRedirect(request.GET.get('next'))
+
+
 class MainView(View):
     template = 'main.html'
 
+
+
     def get(self, request):
-        global userna
-        global index
         form = Shins()
 
 
-        o = Operations.objects.filter(ind=index)
-
-        print("1")
-        if 'yes' in request.GET:
-            print("12")
-            sogla = "Клиент согласен"
-
-            o.soglas = "Да"
-
-            d = (str(index), str(sogla))
+        if (request.GET.get('yes')):
+            ind = (str(request.GET.get('mytextbox')))
+            print("POSTTTT", ind)
+            d = (str(ind), "Клиент согласен")
             with open('main/sog.csv', 'a') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',',
                                         quotechar='"')
                 spamwriter.writerow(d)
+            try:
+                a = Company.objects.get(users__username=request.user)
+                a = a.person.all()
+            except Exception:
+                a = ""
+            return render(request, self.template,
+                      context={"form": form, "b":a})
 
-        elif 'no' in request.GET:
-            print("13")
-            sogla = "Клиент не согласен"
-
-            o.soglas = "Нет"
-
-            d = (str(index), str(sogla))
+        elif (request.GET.get('no')):
+            ind = (str(request.GET.get('mytextbox')))
+            print("POSTTTT", ind)
+            d = (str(ind), "Клиент не согласен")
             with open('main/sog.csv', 'a') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',',
                                         quotechar='"')
                 spamwriter.writerow(d)
+            try:
+                a = Company.objects.get(users__username=request.user)
+                a = a.person.all()
+            except Exception:
+                a = ""
+            return render(request, self.template,
+                          context={"form": form, "b": a})
 
-        try:
-            o.save()
-        except:
-            pass
         try:
             a = Company.objects.get(users__username=request.user)
             a = a.person.all()
-
-
         except Exception:
             a = ""
         return render(request, self.template,
@@ -76,8 +87,7 @@ class MainView(View):
 
     def post(self, request):
         global userna
-        global index
-        index = ""
+
         form = Shins(request.POST)
         user_form = UsersForm2(request.POST)
         if form.is_valid():
@@ -209,7 +219,7 @@ class MainView(View):
 
             person = Person.objects.get(first_name=fio[0],second_name=fio[1],
                                         third_name=fio[2])
-
+            index = "не правильно записался индекс"
             if cena != "Неправильно выбраны параметры":
                 person.shine = shine
                 person.shirina = shirina
@@ -268,7 +278,7 @@ class MainView(View):
                                                             'iznos3' : float(iznos3),
                                                             'iznos4' : float(iznos4),
                                                             "skidka":skidka1 + skidka2, "hide2":hide1,
-                                                           "hide":hide, "b": a, "fio":first_name, "mes":mes})
+                                                           "hide":hide, "b": a, "fio":first_name, "mes":mes, "ind":index})
 
         else:
             return render(request, self.template,
